@@ -1,0 +1,76 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Activite index{% endblock %}
+
+{% block body %}
+
+    <h1>Activite index</h1>
+    <a href="{{path('TrierParNomDESCr') }}"><img src="{{ asset('images/chevron-arrow.png') }}" style="max-width: 50%;">ordre croissant selon le Nom</a>
+    <a href="{{path('TrierParNomASCr') }}"><img src="{{ asset('images/chevron-arrow.png') }}" style="max-width: 50%;">ordre decroissant selon le Nom</a>
+    <script src="{{ asset('admin/js/jquery.min.js') }}"></script>
+    <input type="text" id="search" class="form-control form-control-no-border mr-sm-2" placeholder="chercher activite">
+    <table class="table table-bordered dataTable" id="tableac" width="100%" cellspacing="0" role="grid" aria-describedby="dataTable_info" style="width: 100%;">
+<{#  table class="table">#}
+
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Nom_act</th>
+                <th>Desc_act</th>
+                <th>Lieu</th>
+                <th>Type</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for activite in activites %}
+            <tr>
+                <td>{{ activite.id }}</td>
+                <td>{{ activite.nomAct }}</td>
+                <td>{{ activite.descAct }}</td>
+                <td>{{ activite.lieu }}</td>
+                <td>{{ activite.type.nomType }}</td>
+                <td><img style="height: 100px; width: 100px" src="{{ asset('images/activite/'~activite.image) }}" ></td>
+
+
+                <td>
+                    <a href="{{ path('activite_show', {'id': activite.id}) }}">show</a>
+                </td>
+            </tr>
+        {# {% else %}
+            <tr>
+                <td colspan="5">no records found</td>
+            </tr>#}
+
+            <script>
+                $(document).ready(function(){
+                    $('#search').keyup(function(){
+                        search_table($(this).val());
+                    });
+                    function search_table(value){
+                        $('#tableac tbody tr').each(function(){
+                            var found = 'false';
+                            $(this).each(function(){
+                                if($(this).text().toLowerCase().indexOf(value.toLowerCase()) >= 0)
+                                {
+                                    found = 'true';
+                                }
+                            });
+                            if(found == 'true')
+                            {
+                                $(this).show();
+
+                            }
+                            else
+                            {
+                                $(this).hide();
+
+                            }
+                        });
+                    }
+                });
+            </script>
+        {% endfor %}
+        </tbody>
+    </table>
+{% endblock %}

@@ -1,0 +1,43 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Activite{% endblock %}
+
+{% block body %}
+    <h1>Activite</h1>
+
+
+    <table class="table">
+        <tbody>
+        <tr>
+            <th>Id</th>
+            <td>{{ activite.id }}</td>
+        </tr>
+        <tr>
+            <th>Nom_act</th>
+            <td>{{ activite.nomAct }}</td>
+        </tr>
+        <tr>
+            <th>Desc_act</th>
+            <td>{{ activite.descAct }}</td>
+        </tr>
+        <tr>
+            <th>Lieu</th>
+            <td>{{ activite.lieu }}</td>
+        </tr>
+        <tr>
+            <th>Type</th>
+            <td>{{ activite.type.nomType }}</td>
+        </tr>
+        <tr>
+            <th>Image</th>
+            <td><img style="height: 100px; width: 100px" src="{{ asset('images/activite/'~activite.image) }}" ></td>
+
+        </tr>
+
+        </tbody>
+    </table>
+
+    <a href="{{ path('activite_index') }}">back to list</a>
+
+
+{% endblock %}
