@@ -1,0 +1,39 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Produit index{% endblock %}
+
+{% block body %}
+    <section class="section section-sm bg-default">
+        {% for produit in produits %}
+        <div class="container">
+            <h3 class="oh-desktop"><span class="d-inline-block wow slideInDown">Hot Tours</span></h3>
+            <div class="row row-sm row-40 row-md-50">
+                <div class="col-sm-6 col-md-12 wow fadeInRight">
+                    <!-- Product Big-->
+                    <article class="product-big">
+                        <div class="unit flex-column flex-md-row align-items-md-stretch">
+                            <div class="unit-left"><a class="product-big-figure" href="#"><img src="{{ asset('images/product-big-1-600x366.jpg') }}" alt="" width="600" height="366"/></a></div>
+                            <div class="unit-body">
+                                <div class="product-big-body">
+                                    <h5 class="product-big-title"><a href="#">{{ produit.nom }}</a></h5>
+
+                                    <p class="product-big-text">{{ produit.description}}</p><a class="button button-black-outline button-ujarak" href="{{ path('add_cart',{'id': produit.id}) }}">J'achete</a>
+                                    <div class="product-big-price-wrap"><span class="product-big-price">{{ produit.prix }}</span></div>
+                                </div>
+                            </div>
+                        </div>
+                    </article>
+                </div>
+
+            </div>
+        </div>
+    </section>
+{% endfor %}
+{% endblock %}
+
+
+
+
+
+
+
