@@ -17,5 +17,14 @@ class   FrontController extends AbstractController
             'controller_name' => 'FrontController',
         ]);
     }
+    /**
+     * @Route("/back", name="back")
+     */
+    public function back(): Response
+    {
+        return $this->render('back/back.html.twig', [
+            'controller_name' => 'back_controller',
+        ]);
+    }
 
 }

@@ -45,12 +45,12 @@ class CommandeController extends AbstractController
     /**
      * @Route("/new", name="commande_new", methods={"GET","POST"})
      */
-    public function new(Request $request,SessionInterface $session, ProduitRepository   $gamesRepository): Response
+    public function new(Request $request,SessionInterface $session, ProduitRepository   $gamesRepository,EntityManagerInterface $entityManager): Response
     {
         $commande = new Commande();
         $form = $this->createForm(CommandeType::class, $commande);
         $form->handleRequest($request);
-        $panier = $session->get('panier', []);
+        /*$panier = $session->get('panier', []);
         $panierwithData = [];
 
         $total = 0;
@@ -71,18 +71,26 @@ class CommandeController extends AbstractController
                 $commande->setProduct($panierwithData [$i]['product']->getNom());
 
 
-                $commande->setTotalcost($total);}
+              $commande->setTotalcost($total);}
+*/
+        if ($form->isSubmitted() && $form->isValid()) {
 
-            $entityManager = $this->getDoctrine()->getManager();
             $entityManager->persist($commande);
             $entityManager->flush();
 
             return $this->redirectToRoute('commandelist');
         }
+        if ($form->isSubmitted() && $form->isValid()) {
+            $entityManager->persist($commande);
+            $entityManager->flush();
 
+            return $this->redirectToRoute('commande_index', [], Response::HTTP_SEE_OTHER);
+        }
 
-
-
-        return $this->render('commande/new.html.twig',['commande' => $commande,'panierwithData' => $panierwithData,'total'=>$total,'form'=>$form->createView()]);
+        return $this->render('commande/new.html.twig', [
+            'commande' => $commande,
+            'form' => $form->createView(),
+        ]);
     }
-}
+
+    }

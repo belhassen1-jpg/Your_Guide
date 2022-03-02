@@ -154,9 +154,9 @@ class Commande
         return $this;
     }
 
-    public function removeCommandeProduit(produit $commandeProduit): self
+     public function removeCommandeProduit(produit $commandeProduit): self
     {
-        if ($this->commande_produit->removeElement($commandeProduit)) {
+        if ($this->commande_Produit->removeElement($commandeProduit)) {
             // set the owning side to null (unless already changed)
             if ($commandeProduit->getProduitP() === $this) {
                 $commandeProduit->setProduitP(null);

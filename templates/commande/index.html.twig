@@ -17,13 +17,13 @@
             </tr>
         </thead>
         <tbody>
-        {% for commande in commandes %}
+        {% for i in commandes %}
             <tr>
-                <td>{{ commande.id }}</td>
-                <td>{{ commande.date }}</td>
-                <td>{{ commande.etat }}</td>
-                <td>{{ commande.commentaire }}</td>
-                <td>{{ commande.adresse }}</td>
+                <td>{{ i.id }}</td>
+                <td>{{ i.date }}</td>
+                <td>{{ i.etat }}</td>
+                <td>{{ i.commentaire }}</td>
+                <td>{{ i.adresse }}</td>
 
             </tr>
         {% else %}

@@ -16,7 +16,7 @@ class CommandeType extends AbstractType
             ->add('etat')
             ->add('commentaire')
             ->add('adresse')
-            ->add('produit')
+            ->add('product')
 
         ;
     }
