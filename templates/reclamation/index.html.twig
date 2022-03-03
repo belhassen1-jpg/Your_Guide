@@ -1,0 +1,48 @@
+{% extends 'basefront.html.twig' %}
+
+{% block title %}Reclamation {% endblock %}
+
+{% block body %}
+    <h1><img src="{{asset('front_office/claim.jpg')}}" alt="" width="200" height="70"/> Reclamations <img src="{{asset('front_office/claim.jpg')}}" alt="" width="200" height="70"/></h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Date_rec</th>
+                <th>Type</th>
+                <th>Description</th>
+                <th>categorie</th>
+                <th>etat</th>
+                                <th>QRcode</th>
+
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for reclamation in reclamations %}
+            <tr>
+                <td>{{ reclamation.id }}</td>
+                <td>{{ reclamation.dateRec ? reclamation.dateRec|date('Y-m-d') : '' }}</td>
+                <td>{{ reclamation.type }}</td>
+                <td>{{ reclamation.description }}</td>
+                <td>{{ reclamation.categorie }}</td>
+                <td>{{ reclamation.etat }}</td>
+                                 <td><img src="{{asset('back_office/qrcode1.png')}}" alt="" width="70" height="70"/></td>
+
+                <td>
+                    <a href="{{ path('reclamation_show', {'id': reclamation.id}) }}" class="button  button-default-outline-2 button-ujarak">show</a>
+                    <a href="{{ path('reclamation_edit', {'id': reclamation.id}) }}" class="button button-default-outline-2 button-ujarak">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="5">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('reclamation_new') }}" class="button button-md button-default-outline-2 button-ujarak">Create new</a>
+
+{% endblock %}

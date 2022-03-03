@@ -1,0 +1,39 @@
+{% extends 'baseback.html.twig' %}
+
+{% block title %}Categorie index{% endblock %}
+
+{% block body %}
+    <h1><img src="{{asset('back_office/cat.jpg')}}" alt="" width="200" height="70"/> Categories <img src="{{asset('back_office/cat.jpg')}}" alt="" width="200" height="70"/></h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Libelle</th>
+                <th>Description</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for categorie in categories %}
+            <tr>
+                <td>{{ categorie.id }}</td>
+                <td>{{ categorie.libelle }}</td>
+                <td>{{ categorie.description }}</td>
+                <td>
+                    <a href="{{ path('categorie_show_back', {'id': categorie.id}) }}"class="btn btn-block btn-success btn-xs ">show</a>
+                    <a href="{{ path('categorie_edit_back', {'id': categorie.id}) }}"class="btn btn-block btn-primary btn-xs ">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="4">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+ <td>
+     <a href="{{ path('categorie_new_back') }}"class="btn btn-block btn-warning btn-xs">Create new</a>
+ </td>
+
+{% endblock %}
