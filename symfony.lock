@@ -1,4 +1,16 @@
 {
+    "bacon/bacon-qr-code": {
+        "version": "2.0.6"
+    },
+    "captcha-com/captcha": {
+        "version": "4.2.5"
+    },
+    "captcha-com/symfony-captcha-bundle": {
+        "version": "4.2.12"
+    },
+    "dasprid/enum": {
+        "version": "1.0.3"
+    },
     "doctrine/annotations": {
         "version": "1.13",
         "recipe": {
@@ -81,6 +93,9 @@
     },
     "egulias/email-validator": {
         "version": "3.1.2"
+    },
+    "endroid/qr-code": {
+        "version": "4.4.7"
     },
     "friendsofphp/proxy-manager-lts": {
         "version": "v1.0.5"
@@ -215,6 +230,9 @@
         "files": [
             "./config/packages/sensio_framework_extra.yaml"
         ]
+    },
+    "swiftmailer/swiftmailer": {
+        "version": "v6.3.0"
     },
     "symfony/asset": {
         "version": "v4.4.37"
@@ -391,6 +409,18 @@
             "./config/packages/test/monolog.yaml"
         ]
     },
+    "symfony/notifier": {
+        "version": "5.0",
+        "recipe": {
+            "repo": "github.com/symfony/recipes",
+            "branch": "master",
+            "version": "5.0",
+            "ref": "c31585e252b32fe0e1f30b1f256af553f4a06eb9"
+        },
+        "files": [
+            "./config/packages/notifier.yaml"
+        ]
+    },
     "symfony/options-resolver": {
         "version": "v4.4.37"
     },
@@ -408,9 +438,6 @@
             "./phpunit.xml.dist",
             "./tests/bootstrap.php"
         ]
-    },
-    "symfony/polyfill-intl-grapheme": {
-        "version": "v1.25.0"
     },
     "symfony/polyfill-intl-icu": {
         "version": "v1.24.0"
@@ -495,8 +522,19 @@
     "symfony/stopwatch": {
         "version": "v4.4.37"
     },
-    "symfony/string": {
-        "version": "v5.4.3"
+    "symfony/swiftmailer-bundle": {
+        "version": "3.5",
+        "recipe": {
+            "repo": "github.com/symfony/recipes",
+            "branch": "master",
+            "version": "2.5",
+            "ref": "f0b2fccdca2dfd97dc2fd5ad216d5e27c4f895ac"
+        },
+        "files": [
+            "./config/packages/dev/swiftmailer.yaml",
+            "./config/packages/swiftmailer.yaml",
+            "./config/packages/test/swiftmailer.yaml"
+        ]
     },
     "symfony/translation": {
         "version": "4.4",

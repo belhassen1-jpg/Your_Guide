@@ -6,6 +6,7 @@ use App\Entity\Reclamation;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
+use Captcha\Bundle\CaptchaBundle\Form\Type\CaptchaType;
 
 class ReclamationType extends AbstractType
 {
@@ -16,8 +17,9 @@ class ReclamationType extends AbstractType
             ->add('type')
             ->add('description')
             ->add('categorie')
-            
-
+            ->add('captchaCode', CaptchaType::class, array(
+                'captchaConfig' => 'ExampleCaptcha'
+              ))
 
             
             
